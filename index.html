@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Aplicaciones - Wilson Cruz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#1a1a1a,#2b0b00);
+color:#fff;
+min-height:100vh;
+}
+
+header{
+text-align:center;
+padding:30px 20px;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+width:120px;
+height:120px;
+object-fit:contain;
+background:white;
+border-radius:50%;
+padding:8px;
+box-shadow:0 0 25px rgba(255,153,0,.5);
+}
+
+h1{
+margin-top:15px;
+font-size:2rem;
+color:#ffcc80;
+}
+
+.subtitle{
+color:#ddd;
+margin-top:8px;
+}
+
+.search{
+max-width:700px;
+margin:25px auto;
+padding:0 20px;
+}
+
+.search input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+font-size:16px;
+outline:none;
+}
+
+.section{
+padding:30px 20px;
+}
+
+.section h2{
+margin-bottom:20px;
+color:#ffcc80;
+border-left:5px solid #ff6f00;
+padding-left:10px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.1);
+border-radius:18px;
+padding:20px;
+transition:.3s;
+backdrop-filter:blur(6px);
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(255,153,0,.25);
+}
+
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.card h3{
+margin-bottom:8px;
+}
+
+.card p{
+font-size:14px;
+color:#ccc;
+margin-bottom:15px;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.btn{
+flex:1;
+text-align:center;
+padding:10px;
+border:none;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+cursor:pointer;
+}
+
+.open{
+background:#ff6f00;
+color:white;
+}
+
+.copy{
+background:#333;
+color:white;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:#aaa;
+}
+
+.counter{
+margin-top:10px;
+color:#ffcc80;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+
+<img src="https://jwilsoncruz.github.io/gopollosrhosse/logo.png" class="logo" alt="Logo">
+
+<h1>Portal de Aplicaciones</h1>
+
+<div class="subtitle">
+Wilson Cruz · Consultor de Marketing Digital y Desarrollo Web
+</div>
+
+<div class="counter" id="counter"></div>
+
+</header>
+
+<div class="search">
+<input type="text" id="search" placeholder="Buscar aplicación...">
+</div>
+
+<div id="content"></div>
+
+<footer>
+© 2026 Wilson Cruz · Todos los proyectos en un solo lugar
+</footer>
+
+<script>
+
+const B = "https://jwilsoncruz.github.io/";
+const G = B + "gopollosrhosse/";
+
+const data = [
+
+{
+cat:"🍗 Go Pollos Rhosse",
+items:[
+["Inicio","🏠","Página web de Go Pollos Rhosse - Pollos a la Leña",G+"index.html"],
+["Reservas","📅","Sistema de reservas",G+"Reservas.html"],
+["Cocina","👨‍🍳","Panel de cocina",G+"cocina.html"],
+["Botones Cocina","🎛️","Botones físicos",G+"cocinabotonesfisicos.html"],
+["Comandas","📝","Gestión de comandas",G+"comandas.html"],
+["Control","📊","Panel de control",G+"control.html"],
+["Cumples","🎂","Cumpleaños",G+"cumples.html"],
+["Invitación","💌","Invitación digital",G+"invitacion.html"],
+["Pantalla","📺","Pantalla pedidos",G+"pantalla.html"],
+["Pantalla 2","🖥️","Pantalla secundaria",G+"pantalla2.html"],
+["Pedidos","🛒","Sistema pedidos",G+"pedidos.html"],
+["Pollos GV2","🍗","Versión GV2",G+"pollosGv2.html"],
+["Pronósticos","📈","Pronósticos de venta",G+"pronosticos.html"],
+["Radio","🎵","Radio YouTube",G+"radio_youtube_ok.html"],
+["Stock","📦","Control de stock",G+"stockcomandas.html"],
+["Web Pro","🌐","Sitio profesional",G+"webpro.html"]
+]
+},
+
+{
+cat:"📶 WiFi Marketing",
+items:[
+["WiFi","📶","Portal WiFi",G+"wifi.html"],
+["WiFi Premium","🚀","Portal Premium",G+"wifipremium.html"],
+["WiFi Pro","⭐","Portal Pro",G+"wifipro.html"],
+["Pre-WiFi Gratis","📝","Formulario prewifi gratis",B+"wifi"],
+["Demo Fidelización WiFi","🎯","Demo de web de fidelización con tu WiFi",B+"DemoWifiFidelizacion"]
+]
+},
+
+{
+cat:"📈 SEO y Captación",
+items:[
+["Pollo Cerca","📍","SEO Local",G+"pollo-cerca.html"],
+["Delivery Trinidad","🛵","SEO Delivery",G+"delivery-trinidad.html"]
+]
+},
+
+{
+cat:"🎁 Promociones y Lanzamientos",
+items:[
+["Promo Go Pollos","🎉","Promociones",B+"promo-go-pollos"],
+["Hard Launch","🚀","Lanzamientos de apps, presentación y cuenta regresiva",B+"HardLaunch"],
+["Lanzamiento","🎊","Pantalla de lanzamiento, sorteo y presentación",B+"Lanzamiento"]
+]
+},
+
+{
+cat:"🎉 Eventos y Fiestas",
+items:[
+["Foto Espejo","🪞","Foto espejo para fiestas",B+"fotoespejo"],
+["Foto Mosaico","🧩","Foto mosaico para fiestas y presentación de 15añeras",B+"FotoMosaico"],
+["Sobre Invitación","✉️","Invitación con foto y confirmación por WhatsApp",B+"SobreInvitacion"],
+["Tickets QR","🎟️","Eventos con QR: boletos, ventas, foto, logo y zonas",B+"ticketsqr"],
+["Noche de Talentos","🎤","Show de noche de talentos y más",B+"nt"],
+["Entrevistas","🗓️","Entrevistas de barrio/estaca con pantalla de espera",B+"Entrevistas"],
+["Despedida","🕊️","Mensajes en funerales",B+"Despedida"]
+]
+},
+
+{
+cat:"🎯 Fidelización y Negocios",
+items:[
+["Cliente Fiel","💎","Fidelización de clientes con QR",B+"ClienteFiel"],
+["Pasanaco","💰","Pasanaco: cobros y control de pagos",B+"Pasanaco"],
+["Memorial QR","🪦","Memorial digital",B+"memorial-qr"],
+["Stylos Smith","✂️","Salón de Belleza",B+"Stylos-Smith-Study"],
+["Ferretería","🔩","Demo ferretería",B+"webferreteria"]
+]
+},
+
+{
+cat:"📺 Radio, TV y Deportes",
+items:[
+["Trinity Radio","📻","Radio por internet potenciado por Caster.fm y diseñado por Jedis Web Solutions",B+"TrinityRadio"],
+["Marcador Soccer","⚽","Gráficos de marcador de fútbol soccer",B+"MarcadorSoccer"],
+["Gráficos TV Pro","📡","Gráficos profesionales para TV y transmisiones",B+"GraficosTvPro"],
+["Movie Narco Héroe","🎬","Proyecto de película",B+"MovieNarcoHeroe"]
+]
+},
+
+{
+cat:"🚕 Transporte",
+items:[
+["Mi Taxi","🚕","Mi Taxi app",B+"MiTaxi"],
+["Soy MotoTaxi","🛵","Mototaxi y delivery Custodio",B+"SoyMotoTaxi"],
+["Homenaje Mi Taxi","🏆","Homenaje al servicio",G+"homenaje.html?e=servicio#pantalla"]
+]
+},
+
+{
+cat:"🛠️ Herramientas",
+items:[
+["Creador de Calendarios","🗓️","Calendarios A4, A5, A3 y de bolsillo personalizables con logo, foto y fondo",B+"CreadorCalendarios"],
+["HomeCam","📹","Proyecto multimedia","https://vdo.ninja/?view=gopollosrhosse&password=clave2026&cleanoutput&autostart"]
+]
+}
+
+];
+
+document.getElementById("counter").textContent =
+"Total de aplicaciones: " + data.reduce((n,s)=>n+s.items.length,0);
+
+function copyLink(url){
+navigator.clipboard.writeText(url).then(()=>alert("Enlace copiado"));
+}
+
+function render(filter=""){
+const content=document.getElementById("content");
+content.innerHTML="";
+const f=filter.toLowerCase();
+
+data.forEach(section=>{
+
+let html="";
+
+section.items.forEach(item=>{
+
+if(
+item[0].toLowerCase().includes(f) ||
+item[2].toLowerCase().includes(f) ||
+section.cat.toLowerCase().includes(f)
+){
+
+html+=`
+<div class="card">
+<div class="icon">${item[1]}</div>
+<h3>${item[0]}</h3>
+<p>${item[2]}</p>
+<div class="buttons">
+<a class="btn open" target="_blank" rel="noopener" href="${item[3]}">Abrir</a>
+<button class="btn copy" onclick="copyLink('${item[3]}')">Copiar</button>
+</div>
+</div>`;
+}
+
+});
+
+if(html!=""){
+content.innerHTML+=`
+<div class="section">
+<h2>${section.cat}</h2>
+<div class="grid">
+${html}
+</div>
+</div>`;
+}
+
+});
+
+}
+
+render();
+
+document.getElementById("search").addEventListener("keyup",e=>{
+render(e.target.value);
+});
+
+</script>
+
+</body>
+</html>
